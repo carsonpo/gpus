@@ -1,64 +1,42 @@
 # FluidStack GPU Pricing
 
-> Leading AI cloud platform with immediate access to thousands of H100s and H200s.
+> AI cloud platform with immediate access to thousands of H100s and H200s.
 
-Competitive pricing for large-scale AI training with InfiniBand connectivity.
+Competitive pricing with InfiniBand connectivity included.
 
 ---
 
-## GPU Pricing
+## GPU Performance Metrics
 
-| GPU            | VRAM  | Price/hr      | Notes                 |
-| -------------- | ----- | ------------- | --------------------- |
-| **H200 141GB** | 141GB | Contact sales | InfiniBand included   |
-| **H100 80GB**  | 80GB  | ~$1.99        | Thousands available   |
-| **A100 80GB**  | 80GB  | ~$1.40        | Based on availability |
-| **A100 40GB**  | 40GB  | Market rates  | Instant access        |
+| GPU       | VRAM  | Price/hr | VRAM/$ | BW/$    | FP16 TFLOPS/$ |
+| --------- | ----- | -------- | ------ | ------- | ------------- |
+| H200      | 141GB | $2.20    | 64.09  | 2181.82 | 449.55        |
+| H100      | 80GB  | $1.99    | 40.20  | 1507.54 | 496.98        |
+| A100 80GB | 80GB  | $1.40    | 57.14  | 1428.57 | 222.86        |
+| A100 40GB | 40GB  | $1.20    | 33.33  | 1333.33 | 260.00        |
+
+## Performance Scores
+
+| GPU       | VRAM-Focused | Compute-Focused | Bandwidth-Focused |
+| --------- | ------------ | --------------- | ----------------- |
+| H200      | 100.00       | 99.70           | 100.00            |
+| H100      | 91.49        | 100.00          | 88.28             |
+| A100 80GB | 60.31        | 54.49           | 59.55             |
+| A100 40GB | 57.80        | 57.95           | 58.95             |
 
 ## Key Features
 
-**Scale**
-
-- Thousands of GPUs available
-- Up to 1,024 GPUs with approval
-- 10 GPUs instant access without sales
-- InfiniBand connectivity standard
-
-**Performance**
-
-- High-speed interconnect
-- Optimized for LLM training
-- Foundation model support
-- Managed infrastructure
-
-**Customers**
-
-- Character.ai
-- Playground
-- Samsung Research
-- Krisp
-- Codeway
-
-## Availability
-
-**Instant Access**
-
-- Up to 10 GPUs immediately
-- No pre-approval required
-- Quick deployment
-
-**Large Scale**
-
-- 100+ GPUs available
-- Up to 1,024 with approval
-- Contact sales for custom
+- **Scale**: Thousands of GPUs available
+- **Instant Access**: Up to 10 GPUs immediately
+- **InfiniBand**: Standard on all deployments
+- **Large Scale**: Up to 1,024 GPUs with approval
 
 ## Infrastructure
 
-- **Founded**: 2017
-- **Focus**: AI/ML workloads
-- **Network**: InfiniBand standard
-- **Support**: Managed services
+- High-speed interconnect included
+- Optimized for LLM training
+- Foundation model support
+- Managed infrastructure options
 
 ## Pricing Model
 
@@ -67,17 +45,9 @@ Competitive pricing for large-scale AI training with InfiniBand connectivity.
 - Custom contracts for scale
 - Competitive vs hyperscalers
 
-## Best For
-
-- Large-scale LLM training
-- Foundation model development
-- Research institutions
-- AI-first companies
-- Cost-conscious teams
-
 ## Notes
 
+- Founded 2017, focused on AI/ML workloads
 - One of the most affordable H100 providers
 - Strong availability compared to hyperscalers
 - Ideal for 100+ GPU deployments
-- Focus on AI/ML specific needs

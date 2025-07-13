@@ -1,122 +1,130 @@
-# GPU Cloud Pricing Summary
+# GPU Cloud Pricing Analysis
 
-> Best providers for each GPU and use case across major cloud platforms.
-
-Analysis based on on-demand hourly rates. Last updated: July 2025.
+Analysis based on on-demand hourly rates. Metrics calculated from vendor specifications.
 
 ---
 
-## Best Price by GPU
+## Top Performance Per Dollar Rankings
 
-| GPU              | Best Provider    | Price/hr | Runner-up        | Price/hr |
-| ---------------- | ---------------- | -------- | ---------------- | -------- |
-| **H200**         | RunPod Community | $3.59    | AWS P5e          | ~$15.00  |
-| **H100**         | FluidStack       | ~$1.99   | SFCompute        | ~$2.30   |
-| **A100 80GB**    | Novita AI        | $0.35    | RunPod Community | $1.19    |
-| **A100 40GB**    | GCP              | ~$3.67   | AWS P4d          | ~$2.75   |
-| **RTX 6000 Ada** | RunPod Community | $0.74    | RunPod Secure    | $0.77    |
-| **RTX 5090**     | RunPod Community | $0.69    | RunPod Secure    | $0.89    |
-| **RTX 4090**     | RunPod Community | $0.34    | RunPod Secure    | $0.69    |
-| **L40S**         | RunPod Community | $0.79    | GCP G6e          | ~$1.50   |
-| **L4**           | GCP G2           | ~$1.00   | AWS G6           | ~$0.80   |
-| **RTX 3090**     | RunPod Community | $0.22    | RunPod Secure    | $0.43    |
+### Best VRAM per Dollar (GB/$)
 
-## Best for Memory (96GB+)
+| Rank | GPU       | Provider  | Tier      | VRAM/$ | Price/hr |
+| ---- | --------- | --------- | --------- | ------ | -------- |
+| 1    | A100 80GB | Novita AI | On-Demand | 228.57 | $0.35    |
+| 2    | RTX A5000 | RunPod    | Community | 150.00 | $0.16    |
+| 3    | RTX A6000 | RunPod    | Community | 145.45 | $0.33    |
+| 4    | A40       | RunPod    | Secure    | 120.00 | $0.40    |
+| 5    | RTX 3090  | RunPod    | Community | 109.09 | $0.22    |
 
-1. **B200 (192GB)** - Coming soon on enterprise clouds
-2. **H200 (141GB)** - RunPod @ $3.59/hr
-3. **H100 NVL (94GB)** - RunPod @ $2.59/hr
-4. **RTX PRO 6000 (96GB)** - Enterprise only
+### Best Bandwidth per Dollar (GB/s/$)
 
-## Best for Bandwidth
+| Rank | GPU       | Provider  | Tier      | BW/$    | Price/hr |
+| ---- | --------- | --------- | --------- | ------- | -------- |
+| 1    | A100 80GB | Novita AI | On-Demand | 5714.29 | $0.35    |
+| 2    | RTX A5000 | RunPod    | Community | 4800.00 | $0.16    |
+| 3    | V100      | RunPod    | Community | 4736.84 | $0.19    |
+| 4    | RTX 3080  | RunPod    | Community | 4470.59 | $0.17    |
+| 5    | RTX 3090  | RunPod    | Community | 4254.55 | $0.22    |
 
-1. **B200 (8.0 TB/s)** - Coming soon
-2. **H200 (4.8 TB/s)** - Multiple providers ~$3.59+/hr
-3. **H100 NVL (3.9 TB/s)** - RunPod @ $2.59/hr
-4. **H100 SXM (3.0 TB/s)** - FluidStack @ $1.99/hr
+### Best FP16 TFLOPS per Dollar
 
-## Best TFLOPS per Dollar (FP16)
+| Rank | GPU       | Provider  | Tier      | TFLOPS/$ | Price/hr |
+| ---- | --------- | --------- | --------- | -------- | -------- |
+| 1    | RTX 4090  | RunPod    | Community | 970.59   | $0.34    |
+| 2    | A100 80GB | Novita AI | On-Demand | 891.43   | $0.35    |
+| 3    | RTX 3080  | RunPod    | Community | 700.00   | $0.17    |
+| 4    | V100      | RunPod    | Community | 657.89   | $0.19    |
+| 5    | RTX 4090  | Novita AI | On-Demand | 660.00   | $0.50    |
 
-| GPU              | Provider         | TFLOPS | $/hr  | TFLOPS/$ |
-| ---------------- | ---------------- | ------ | ----- | -------- |
-| **RTX 4090**     | RunPod Community | 330    | $0.34 | **970**  |
-| **A100**         | Novita AI        | 312    | $0.35 | **891**  |
-| **RTX 3090**     | RunPod Community | 142    | $0.22 | **645**  |
-| **RTX 6000 Ada** | RunPod Community | 330    | $0.74 | **446**  |
-| **L40S**         | RunPod Community | 362    | $0.79 | **458**  |
+## Weighted Performance Scores
 
-## Provider Strengths
+### VRAM-Focused (50% VRAM, 25% TFLOPS, 25% Bandwidth)
 
-**RunPod**
+| Rank | Provider         | GPU              | Score  | Price/hr |
+| ---- | ---------------- | ---------------- | ------ | -------- |
+| 1    | RunPod Community | RTX 4090         | 100.00 | $0.34    |
+| 2    | RunPod Community | RTX A5000        | 99.94  | $0.16    |
+| 3    | V100             | RunPod Community | 92.47  | $0.19    |
+| 4    | RTX 3090         | RunPod Community | 91.69  | $0.22    |
+| 5    | A40              | RunPod Secure    | 91.17  | $0.40    |
 
-- Widest GPU selection
-- Best community cloud prices
-- Serverless options
-- No egress fees
+### Compute-Focused (50% TFLOPS, 25% VRAM, 25% Bandwidth)
 
-**AWS**
+| Rank | Provider         | GPU       | Score  | Price/hr |
+| ---- | ---------------- | --------- | ------ | -------- |
+| 1    | RunPod Community | RTX 4090  | 100.00 | $0.34    |
+| 2    | RunPod Secure    | RTX A5000 | 100.00 | $0.26    |
+| 3    | SFCompute        | H200 SXM  | 100.00 | $2.50    |
+| 4    | FluidStack       | H200 SXM  | 99.70  | $2.20    |
+| 5    | SFCompute        | H100 SXM  | 98.62  | $2.30    |
 
-- Enterprise features
-- Global availability
-- Integrated services
-- Expensive but reliable
+### Bandwidth-Focused (50% Bandwidth, 25% VRAM, 25% TFLOPS)
 
-**GCP**
+| Rank | Provider         | GPU              | Score  | Price/hr |
+| ---- | ---------------- | ---------------- | ------ | -------- |
+| 1    | RunPod Secure    | RTX A5000        | 100.00 | $0.26    |
+| 2    | RunPod Community | RTX A5000        | 100.00 | $0.16    |
+| 3    | SFCompute        | H200 SXM         | 100.00 | $2.50    |
+| 4    | FluidStack       | H200 SXM         | 100.00 | $2.20    |
+| 5    | V100             | RunPod Community | 97.38  | $0.19    |
 
-- Good spot pricing (60-91% off)
-- L4 availability
-- Integrated with GCP services
-- Limited H100 access
+## Price Comparison by GPU Model
 
-**SFCompute**
+| GPU       | Provider (Low)   | Low Price | Provider (High) | High Price | Range |
+| --------- | ---------------- | --------- | --------------- | ---------- | ----- |
+| H200 SXM  | FluidStack       | $2.20     | AWS             | ~$15.00    | 6.8x  |
+| H100 SXM  | FluidStack       | $1.99     | AWS             | $12.29     | 6.2x  |
+| A100 80GB | Novita AI        | $0.35     | GCP             | $7.50      | 21.4x |
+| RTX 4090  | RunPod Community | $0.34     | RunPod Secure   | $0.69      | 2.0x  |
+| L40S      | RunPod Community | $0.79     | AWS             | $1.50      | 1.9x  |
 
-- Market-based pricing
-- InfiniBand included
-- Large cluster support
-- No vendor lock-in
+## Provider Analysis
 
-**FluidStack**
+### RunPod
 
-- Cheapest H100s
-- Thousands available
-- Great for 100+ GPUs
-- InfiniBand standard
+- **GPUs Available**: 20+ models
+- **Price Range**: $0.16-$3.99/hr
+- **Strongest Metrics**: Consumer GPUs (RTX series)
+- **Tiers**: Secure Cloud, Community Cloud
 
-**Novita AI**
+### AWS
 
-- Cheapest A100s
-- Up to 50% savings claimed
-- Simple deployment
-- Good for startups
+- **GPUs Available**: 9 models
+- **Price Range**: $0.53-$15.00/hr
+- **Strongest Metrics**: Enterprise features
+- **Instance Types**: P5, P4, G6, G5, G4
 
-## Recommendations
+### GCP
 
-**For Hobbyists/Prototyping**
+- **GPUs Available**: 6 models
+- **Price Range**: $0.35-$11.06/hr
+- **Strongest Metrics**: Spot pricing discounts
+- **Instance Types**: A3, A2, G2, N1+GPU
 
-- RunPod Community Cloud (RTX 3090/4090)
-- Novita AI (A100)
+### FluidStack
 
-**For Startups**
+- **GPUs Available**: 4 models
+- **Price Range**: $1.20-$2.20/hr
+- **Strongest Metrics**: H100/H200 pricing
+- **Features**: InfiniBand included
 
-- FluidStack (H100 at scale)
-- RunPod Secure Cloud (variety)
-- Novita AI (cost-effective)
+### SFCompute
 
-**For Enterprise**
+- **GPUs Available**: 2 models
+- **Price Range**: ~$2.30-$2.50/hr
+- **Strongest Metrics**: Market-based pricing
+- **Features**: 3.2Tb/s InfiniBand
 
-- AWS/GCP (SLAs, support)
-- SFCompute (large clusters)
-- CoreWeave (custom configs)
+### Novita AI
 
-**For Best Value**
-
-- RTX 4090 on RunPod (970 TFLOPS/$)
-- A100 on Novita (891 TFLOPS/$)
-- Avoid hyperscalers for cost
+- **GPUs Available**: 3 models
+- **Price Range**: $0.35-$2.99/hr
+- **Strongest Metrics**: A100 value
+- **Features**: Quick deployment
 
 ## Notes
 
-- Prices change frequently, especially spot/community
-- Consider startup credits when comparing
-- Network costs can add up on hyperscalers
-- InfiniBand crucial for multi-GPU training
+- Prices change frequently, especially spot/community tiers
+- Performance metrics based on theoretical maximums
+- Network costs not included in analysis
+- Some providers require minimum commitments

@@ -1,38 +1,44 @@
 # Novita AI GPU Pricing
 
-> AI cloud platform with competitive GPU pricing and flexible deployment options.
+> AI cloud platform with competitive GPU pricing and flexible deployment.
 
-On-demand pricing with subscription plans available. Up to 50% cost savings claimed.
+Claims up to 50% cost savings vs major providers.
 
 ---
 
-## GPU Pricing
+## GPU Performance Metrics
 
-| GPU              | VRAM | On-Demand     | Notes                 |
-| ---------------- | ---- | ------------- | --------------------- |
-| **H100 80GB**    | 80GB | ~$2.99/hr     | Limited availability  |
-| **A100 80GB**    | 80GB | From $0.35/hr | Cost-effective option |
-| **RTX 4090**     | 24GB | Market rates  | Popular for inference |
-| **RTX 6000 Ada** | 48GB | Contact sales | Enterprise option     |
-| **L40S**         | 48GB | Contact sales | Inference optimized   |
+| GPU       | VRAM | Price/hr | VRAM/$ | BW/$    | FP16 TFLOPS/$ |
+| --------- | ---- | -------- | ------ | ------- | ------------- |
+| H100      | 80GB | $2.99    | 26.76  | 1003.34 | 330.77        |
+| A100 80GB | 80GB | $0.35    | 228.57 | 5714.29 | 891.43        |
+| RTX 4090  | 24GB | $0.50    | 48.00  | 2000.00 | 660.00        |
+
+## Performance Scores
+
+| GPU       | VRAM-Focused | Compute-Focused | Bandwidth-Focused |
+| --------- | ------------ | --------------- | ----------------- |
+| H100      | 25.24        | 30.53           | 24.67             |
+| A100 80GB | 100.00       | 100.00          | 100.00            |
+| RTX 4090  | 49.79        | 60.71           | 48.96             |
 
 ## Features
 
-**GPU Pods**
+### GPU Pods
 
 - Containerized environments
 - Pre-configured templates
 - PyTorch, TensorFlow, CUDA support
 - Instant deployment
 
-**Pricing Options**
+### Pricing Options
 
 - On-demand: Pay per hour
 - Subscription: Monthly plans
 - Reserved resources during subscription
 - 60GB free container storage
 
-**Templates**
+### Templates
 
 - PyTorch 2.2.1
 - TensorFlow
@@ -41,27 +47,24 @@ On-demand pricing with subscription plans available. Up to 50% cost savings clai
 
 ## Deployment Process
 
-1. Select template (PyTorch, TensorFlow, etc.)
+1. Select template
 2. Choose GPU configuration
-3. Customize settings (OS, CUDA version)
-4. Click "Launch Instance"
-
-## Key Benefits
-
-- **Cost Savings**: Up to 50% cheaper than major providers
-- **Fast Deployment**: Streamlined setup process
-- **Flexible Billing**: On-demand or subscription
-- **No Lock-in**: Scale up or down as needed
+3. Customize settings
+4. Launch instance
 
 ## Storage
 
-- 60GB free container disk with every account
-- Additional storage available on-demand
-- Seamless scaling for growing projects
+- 60GB free container disk
+- Additional storage on-demand
+- Seamless scaling
 
 ## Notes
 
 - Focused on AI workloads
 - Simple API for model deployment
 - Support for custom projects
-- Competitive rates for startups and researchers
+- Best A100 pricing in market
+
+```
+
+```

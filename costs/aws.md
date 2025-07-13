@@ -1,74 +1,65 @@
 # AWS EC2 GPU Pricing
 
-> Enterprise-grade GPU instances with on-demand, reserved, and spot pricing options.
+> Enterprise-grade GPU instances with on-demand pricing.
 
-Prices shown are on-demand hourly rates unless noted. Significant price cuts (up to 45%) announced June 2025.
+Prices shown are on-demand hourly rates. Reserved and spot options available.
 
 ---
 
-## P-Series (ML/HPC Optimized)
+## GPU Performance Metrics
 
-| Instance          | GPU Config   | VRAM    | On-Demand  | Notes                      |
-| ----------------- | ------------ | ------- | ---------- | -------------------------- |
-| **p5.48xlarge**   | 8x H100      | 640GB   | $98.32/hr  | 3,200 Gbps EFA networking  |
-| **p5e.48xlarge**  | 8x H200      | 1,128GB | ~$120/hr   | 141GB per GPU              |
-| **p5en.48xlarge** | 8x H200      | 1,128GB | ~$125/hr   | Enhanced CPU-GPU bandwidth |
-| **p4d.24xlarge**  | 8x A100 40GB | 320GB   | ~$22/hr    | After 33% price cut        |
-| **p4de.24xlarge** | 8x A100 80GB | 640GB   | ~$27/hr    | Extended memory variant    |
-| **p3.2xlarge**    | 1x V100      | 16GB    | ~$3.06/hr  | Previous gen               |
-| **p3.8xlarge**    | 4x V100      | 64GB    | ~$12.24/hr | Multi-GPU                  |
-| **p3.16xlarge**   | 8x V100      | 128GB   | ~$24.48/hr | Max V100 config            |
+| GPU       | Instance           | VRAM    | Price/hr | VRAM/$ | BW/$   | FP16 TFLOPS/$ |
+| --------- | ------------------ | ------- | -------- | ------ | ------ | ------------- |
+| H100 SXM  | p5.48xlarge (8x)   | 640GB   | $12.29   | 6.51   | 244.10 | 80.47         |
+| H200 SXM  | p5e.48xlarge (8x)  | 1,128GB | $15.00   | 9.40   | 320.00 | 65.93         |
+| A100 40GB | p4d.24xlarge (8x)  | 320GB   | $2.75    | 14.55  | 581.82 | 113.45        |
+| A100 80GB | p4de.24xlarge (8x) | 640GB   | $3.375   | 23.70  | 592.59 | 92.44         |
+| V100      | p3.2xlarge         | 16GB    | $3.06    | 5.23   | 294.12 | 40.85         |
+| L40S      | g6e.xlarge         | 48GB    | $1.50    | 32.00  | 576.00 | 241.33        |
+| L4        | g6.xlarge          | 24GB    | $0.80    | 30.00  | 375.00 | 75.00         |
+| A10G      | g5.xlarge          | 24GB    | $1.00    | 24.00  | 600.00 | 125.00        |
+| T4        | g4dn.xlarge        | 16GB    | $0.53    | 30.19  | 603.77 | 122.64        |
 
-## G-Series (Graphics/Inference)
+## Performance Scores
 
-| Instance          | GPU Config | VRAM  | On-Demand  | Notes                    |
-| ----------------- | ---------- | ----- | ---------- | ------------------------ |
-| **g6e.xlarge**    | 1x L40S    | 48GB  | ~$1.50/hr  | Latest inference GPU     |
-| **g6e.12xlarge**  | 4x L40S    | 192GB | ~$6.00/hr  | Multi-GPU                |
-| **g6.xlarge**     | 1x L4      | 24GB  | ~$0.80/hr  | Cost-effective inference |
-| **g5.xlarge**     | 1x A10G    | 24GB  | ~$1.00/hr  | Graphics workloads       |
-| **g5.12xlarge**   | 4x A10G    | 96GB  | ~$5.00/hr  | Multi-GPU graphics       |
-| **g5.48xlarge**   | 8x A10G    | 192GB | ~$16.00/hr | Max A10G config          |
-| **g4dn.xlarge**   | 1x T4      | 16GB  | ~$0.53/hr  | Entry-level inference    |
-| **g4dn.12xlarge** | 4x T4      | 64GB  | ~$3.91/hr  | Multi T4                 |
+| GPU       | VRAM-Focused | Compute-Focused | Bandwidth-Focused |
+| --------- | ------------ | --------------- | ----------------- |
+| H100 SXM  | 32.49        | 33.53           | 34.95             |
+| H200 SXM  | 32.16        | 30.28           | 35.86             |
+| A100 40GB | 55.31        | 52.36           | 62.89             |
+| A100 80GB | 54.86        | 46.81           | 60.40             |
+| V100      | 22.24        | 20.33           | 27.00             |
+| L40S      | 100.00       | 100.00          | 100.00            |
+| L4        | 47.53        | 38.01           | 46.33             |
+| A10G      | 64.20        | 58.36           | 69.23             |
+| T4        | 67.06        | 58.69           | 70.41             |
 
-## Pricing Options
+## Instance Details
 
-**On-Demand**
+### P-Series (ML/HPC Optimized)
 
-- Highest flexibility, pay per hour
-- No upfront commitment
-- Prices shown above
+- **p5.48xlarge**: 8x H100, 3,200 Gbps EFA networking
+- **p5e.48xlarge**: 8x H200, Enhanced memory bandwidth
+- **p4d.24xlarge**: 8x A100 40GB, 400 Gbps networking
+- **p4de.24xlarge**: 8x A100 80GB, Extended memory
+- **p3 series**: V100 configurations (1-8 GPUs)
 
-**Savings Plans**
+### G-Series (Graphics/Inference)
 
-- 1-year: Up to 31% discount
-- 3-year: Up to 45% discount
-- Requires commitment
-
-**Spot Instances**
-
-- Up to 90% discount
-- Interruptible workloads
-- Best for fault-tolerant jobs
-
-**Capacity Blocks**
-
-- Reserved GPU time slots
-- p5.48xlarge: $31.464/hr
-- Guaranteed availability
+- **g6e series**: L40S configurations
+- **g6 series**: L4 configurations
+- **g5 series**: A10G configurations (1-8 GPUs)
+- **g4dn series**: T4 configurations (1-4 GPUs)
 
 ## Regional Availability
 
-**P5 (H100)**: US East (N. Virginia), US West (Oregon), Asia Pacific (Mumbai, Tokyo, Jakarta), South America (São Paulo)
-
-**G6e (L40S)**: Limited availability, check specific regions
-
-**P4d/P4de (A100)**: Most major regions
+- **P5 (H100)**: US East, US West, Asia Pacific, South America
+- **G6e (L40S)**: Limited availability
+- **P4d/P4de (A100)**: Most major regions
 
 ## Notes
 
+- Prices per individual GPU calculated from multi-GPU instances
 - EFA networking included on P4/P5 instances
-- EC2 UltraClusters available for P5 (up to 20,000 GPUs)
-- June 2025: 33-45% price cuts on P4/P5 instances
-- P6-B200 (Blackwell) instances available via Capacity Blocks
+- Capacity Blocks available for guaranteed access
+- Spot instances offer up to 90% discount

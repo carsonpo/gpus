@@ -1,39 +1,112 @@
 # RunPod GPU Pricing
 
-> Flexible pay-as-you-go GPU rentals with Secure Cloud and Community Cloud options.
+> Pay-as-you-go GPU rentals with Secure Cloud and Community Cloud options.
 
 Prices shown are hourly rates, billed by the minute. Zero fees for ingress/egress.
 
 ---
 
-## GPU Pricing
+## GPU Performance Metrics
 
-| GPU              | VRAM  | Secure Cloud | Community Cloud | Notes               |
-| ---------------- | ----- | ------------ | --------------- | ------------------- |
-| **H200 SXM**     | 141GB | $3.99/hr     | $3.59/hr        | Extreme throughput  |
-| **H100 SXM**     | 80GB  | $2.99/hr     | $2.69/hr        | 125GB RAM, 20 vCPUs |
-| **H100 NVL**     | 94GB  | $2.79/hr     | $2.59/hr        | 94GB RAM, 16 vCPUs  |
-| **H100 PCIe**    | 80GB  | $2.39/hr     | $1.99/hr        | 188GB RAM, 16 vCPUs |
-| **A100 SXM**     | 80GB  | $1.89/hr     | -               | 125GB RAM, 16 vCPUs |
-| **A100 PCIe**    | 80GB  | $1.64/hr     | $1.19/hr        | 117GB RAM, 8 vCPUs  |
-| **L40S**         | 48GB  | $0.86/hr     | $0.79/hr        | 62GB RAM, 16 vCPUs  |
-| **L40**          | 48GB  | $0.99/hr     | $0.69/hr        | 94GB RAM, 8 vCPUs   |
-| **RTX 6000 Ada** | 48GB  | $0.77/hr     | $0.74/hr        | 62GB RAM, 14 vCPUs  |
-| **RTX A6000**    | 48GB  | $0.49/hr     | $0.33/hr        | 50GB RAM, 8 vCPUs   |
-| **A40**          | 48GB  | $0.40/hr     | -               | 48GB RAM, 9 vCPUs   |
-| **RTX 5090**     | 32GB  | $0.89/hr     | $0.69/hr        | 62GB RAM, 14 vCPUs  |
-| **RTX 4090**     | 24GB  | $0.69/hr     | $0.34/hr        | 29GB RAM, 6 vCPUs   |
-| **L4**           | 24GB  | $0.43/hr     | -               | 50GB RAM, 12 vCPUs  |
-| **RTX A5000**    | 24GB  | $0.26/hr     | $0.16/hr        | 25GB RAM, 3 vCPUs   |
-| **RTX 3090**     | 24GB  | $0.43/hr     | $0.22/hr        | 24GB RAM, 5 vCPUs   |
-| **RTX 3090 Ti**  | 24GB  | -            | $0.27/hr        | Community only      |
-| **A30**          | 24GB  | -            | $0.22/hr        | Community only      |
-| **RTX A4500**    | 20GB  | $0.34/hr     | $0.19/hr        | 31GB RAM, 8 vCPUs   |
-| **RTX 4000 Ada** | 20GB  | $0.34/hr     | $0.20/hr        | 31GB RAM, 4 vCPUs   |
-| **RTX A4000**    | 16GB  | $0.29/hr     | $0.17/hr        | 20GB RAM, 6 vCPUs   |
-| **RTX 2000 Ada** | 16GB  | $0.28/hr     | -               | 31GB RAM, 6 vCPUs   |
-| **Tesla V100**   | 16GB  | -            | $0.19/hr        | Community only      |
-| **RTX 3080**     | 10GB  | -            | $0.17/hr        | Community only      |
+### Secure Cloud
+
+| GPU          | VRAM  | Price/hr | VRAM/$ | BW/$    | FP16 TFLOPS/$ |
+| ------------ | ----- | -------- | ------ | ------- | ------------- |
+| H200 SXM     | 141GB | $3.99    | 35.34  | 1203.01 | 247.87        |
+| H100 SXM     | 80GB  | $2.99    | 26.76  | 1003.34 | 330.77        |
+| H100 NVL     | 94GB  | $2.79    | 33.69  | 1397.85 | 354.48        |
+| H100 PCIe    | 80GB  | $2.39    | 33.47  | 836.82  | 316.32        |
+| A100 SXM     | 80GB  | $1.89    | 42.33  | 1058.20 | 165.08        |
+| A100 PCIe    | 80GB  | $1.64    | 48.78  | 1219.51 | 190.24        |
+| L40S         | 48GB  | $0.86    | 55.81  | 1004.65 | 420.93        |
+| L40          | 48GB  | $0.99    | 48.48  | 872.73  | 182.83        |
+| RTX 6000 Ada | 48GB  | $0.77    | 62.34  | 1246.75 | 428.57        |
+| RTX A6000    | 48GB  | $0.49    | 97.96  | 1567.35 | 315.92        |
+| A40          | 48GB  | $0.40    | 120.00 | 1740.00 | 374.25        |
+| RTX 5090     | 32GB  | $0.89    | 35.96  | 1685.39 | 434.83        |
+| RTX 4090     | 24GB  | $0.69    | 34.78  | 1449.28 | 478.26        |
+| L4           | 24GB  | $0.43    | 55.81  | 697.67  | 139.53        |
+| RTX A5000    | 24GB  | $0.26    | 92.31  | 2953.85 | 384.62        |
+| RTX 3090     | 24GB  | $0.43    | 55.81  | 2176.74 | 330.23        |
+| RTX A4500    | 20GB  | $0.34    | 58.82  | 1882.35 | 220.59        |
+| RTX 4000 Ada | 20GB  | $0.34    | 58.82  | 941.18  | 451.18        |
+| RTX A4000    | 16GB  | $0.29    | 55.17  | 1544.83 | 172.41        |
+| RTX 2000 Ada | 16GB  | $0.28    | 57.14  | 1028.57 | 342.68        |
+
+### Community Cloud
+
+| GPU          | VRAM  | Price/hr | VRAM/$ | BW/$    | FP16 TFLOPS/$ |
+| ------------ | ----- | -------- | ------ | ------- | ------------- |
+| H200 SXM     | 141GB | $3.59    | 39.28  | 1337.05 | 275.49        |
+| H100 SXM     | 80GB  | $2.69    | 29.74  | 1115.24 | 367.66        |
+| H100 NVL     | 94GB  | $2.59    | 36.29  | 1505.79 | 381.85        |
+| H100 PCIe    | 80GB  | $1.99    | 40.20  | 1005.03 | 379.90        |
+| A100 PCIe    | 80GB  | $1.19    | 67.23  | 1680.67 | 262.18        |
+| L40S         | 48GB  | $0.79    | 60.76  | 1093.67 | 458.23        |
+| L40          | 48GB  | $0.69    | 69.57  | 1252.17 | 262.32        |
+| RTX 6000 Ada | 48GB  | $0.74    | 64.86  | 1297.30 | 445.95        |
+| RTX A6000    | 48GB  | $0.33    | 145.45 | 2327.27 | 469.09        |
+| RTX 5090     | 32GB  | $0.69    | 46.38  | 2173.91 | 560.87        |
+| RTX 4090     | 24GB  | $0.34    | 70.59  | 2941.18 | 970.59        |
+| RTX A5000    | 24GB  | $0.16    | 150.00 | 4800.00 | 625.00        |
+| RTX 3090     | 24GB  | $0.22    | 109.09 | 4254.55 | 645.45        |
+| RTX 3090 Ti  | 24GB  | $0.27    | 88.89  | 3733.33 | 592.59        |
+| RTX A4500    | 20GB  | $0.19    | 105.26 | 3368.42 | 394.74        |
+| RTX 4000 Ada | 20GB  | $0.20    | 100.00 | 1600.00 | 767.00        |
+| RTX A4000    | 16GB  | $0.17    | 94.12  | 2635.29 | 294.12        |
+| V100         | 16GB  | $0.19    | 84.21  | 4736.84 | 657.89        |
+| RTX 3080     | 10GB  | $0.17    | 58.82  | 4470.59 | 700.00        |
+
+## Performance Scores
+
+### Secure Cloud Scores
+
+| GPU          | VRAM-Focused | Compute-Focused | Bandwidth-Focused |
+| ------------ | ------------ | --------------- | ----------------- |
+| H200 SXM     | 50.76        | 56.30           | 49.06             |
+| H100 SXM     | 56.05        | 68.17           | 52.28             |
+| H100 NVL     | 64.96        | 76.27           | 62.54             |
+| H100 PCIe    | 54.01        | 64.81           | 48.44             |
+| A100 SXM     | 41.12        | 41.34           | 39.25             |
+| A100 PCIe    | 47.39        | 47.65           | 45.23             |
+| L40S         | 73.21        | 86.28           | 63.47             |
+| L40          | 42.45        | 43.34           | 38.01             |
+| RTX 6000 Ada | 78.41        | 90.25           | 69.33             |
+| RTX A6000    | 77.33        | 76.63           | 68.12             |
+| A40          | 91.17        | 90.11           | 78.89             |
+| RTX 5090     | 78.10        | 92.85           | 75.66             |
+| RTX 4090     | 80.12        | 98.21           | 75.20             |
+| L4           | 37.12        | 34.98           | 31.37             |
+| RTX A5000    | 100.00       | 100.00          | 100.00            |
+| RTX 3090     | 76.28        | 80.73           | 76.93             |
+| RTX A4500    | 60.89        | 59.49           | 61.43             |
+| RTX 4000 Ada | 76.67        | 91.22           | 65.40             |
+| RTX A4000    | 50.57        | 47.93           | 50.25             |
+| RTX 2000 Ada | 64.75        | 73.07           | 56.71             |
+
+### Community Cloud Scores
+
+| GPU          | VRAM-Focused | Compute-Focused | Bandwidth-Focused |
+| ------------ | ------------ | --------------- | ----------------- |
+| H200 SXM     | 34.69        | 31.40           | 33.55             |
+| H100 SXM     | 38.31        | 38.01           | 35.76             |
+| H100 NVL     | 43.03        | 41.22           | 41.46             |
+| H100 PCIe    | 39.89        | 39.05           | 35.80             |
+| A100 PCIe    | 40.17        | 32.94           | 38.36             |
+| L40S         | 49.02        | 47.12           | 42.52             |
+| L40          | 37.46        | 31.20           | 33.56             |
+| RTX 6000 Ada | 50.18        | 47.12           | 44.40             |
+| RTX A6000    | 70.61        | 57.09           | 62.25             |
+| RTX 5090     | 61.96        | 60.09           | 60.06             |
+| RTX 4090     | 100.00       | 100.00          | 93.91             |
+| RTX A5000    | 99.94        | 81.53           | 100.00            |
+| RTX 3090     | 91.69        | 79.17           | 92.53             |
+| RTX 3090 Ti  | 81.35        | 71.44           | 82.31             |
+| RTX A4500    | 67.01        | 53.41           | 67.65             |
+| RTX 4000 Ada | 80.16        | 77.80           | 68.41             |
+| RTX A4000    | 53.05        | 41.02           | 52.75             |
+| V100         | 92.47        | 81.26           | 97.38             |
+| RTX 3080     | 89.96        | 82.65           | 95.27             |
 
 ## Storage Pricing
 
@@ -47,23 +120,9 @@ Prices shown are hourly rates, billed by the minute. Zero fees for ingress/egres
 - Under 1TB: $0.07/GB/month
 - Over 1TB: $0.05/GB/month
 
-## Serverless Pricing (per second)
-
-| GPU                      | Flex     | Active   |
-| ------------------------ | -------- | -------- |
-| **H200**                 | $0.00155 | $0.00124 |
-| **H100**                 | $0.00116 | $0.00093 |
-| **A100**                 | $0.00076 | $0.00060 |
-| **L40/L40S/6000 Ada**    | $0.00053 | $0.00037 |
-| **A6000/A40**            | $0.00034 | $0.00024 |
-| **4090**                 | $0.00031 | $0.00021 |
-| **L4/A5000/3090**        | $0.00019 | $0.00013 |
-| **A4000/A4500/RTX 4000** | $0.00016 | $0.00011 |
-
 ## Notes
 
 - Secure Cloud: Dedicated hardware with 99.99% uptime
 - Community Cloud: Shared resources, lower cost
 - 30+ regions globally
-- Custom Docker containers supported
-- Startup and researcher credit programs available
+- Billed by the minute

@@ -2,51 +2,43 @@
 
 > Marketplace for large-scale GPU clusters with InfiniBand interconnect.
 
-Market-based pricing with ability to buy and sell contracts. No long-term lock-in.
+Market-based pricing with contract trading capabilities.
 
 ---
 
-## Available GPUs
+## GPU Performance Metrics
 
-| GPU Type       | Interconnect       | Price Range  | Notes                |
-| -------------- | ------------------ | ------------ | -------------------- |
-| **H100 80GB**  | 3.2Tb/s InfiniBand | ~$2.30/hr    | Market pricing       |
-| **H200 141GB** | 3.2Tb/s InfiniBand | Market-based | Limited availability |
+| GPU  | VRAM  | Price/hr | VRAM/$ | BW/$    | FP16 TFLOPS/$ |
+| ---- | ----- | -------- | ------ | ------- | ------------- |
+| H100 | 80GB  | $2.30    | 34.78  | 1304.35 | 430.00        |
+| H200 | 141GB | $2.50    | 56.40  | 1920.00 | 395.60        |
+
+## Performance Scores
+
+| GPU  | VRAM-Focused | Compute-Focused | Bandwidth-Focused |
+| ---- | ------------ | --------------- | ----------------- |
+| H100 | 89.95        | 98.62           | 86.80             |
+| H200 | 100.00       | 100.00          | 100.00            |
 
 ## Deployment Options
 
-**Kubernetes Clusters**
+- **Kubernetes Clusters**: Full InfiniBand fabric (3.2Tb/s)
+- **Virtual Machines**: No InfiniBand support yet
+- **Bare Metal**: Custom configurations available
 
-- Full InfiniBand fabric included
-- 3.2Tb/s interconnect
-- Ideal for distributed training
+## Market-Based Pricing
 
-**Virtual Machines**
-
-- No InfiniBand support yet
-- More flexible configurations
-- Quick deployment
-
-**Bare Metal**
-
-- Contact for custom configs
-- Full hardware control
-- Enterprise support
-
-## Pricing Model
-
-**Market-Based**
-
-- Buy at your max price
+- Buy at your maximum price
 - Sell unused capacity
 - No fixed rates
+- Contract trading enabled
 
-**Example CLI Usage**
+Example usage:
 
 ```bash
 # Buy 256 H100s for 3 days at max $2.30/GPU/hr
 $ sf buy -n 256 -d 3d -p 2.3
 
-# Sell part of contract for $2.10/GPU/hr
+# Sell unused capacity
 $ sf sell -c <contract> -s tomorrow -d 1d -p 2.1
 ```

@@ -1,98 +1,69 @@
 # Google Cloud Platform GPU Pricing
 
-> Accelerator-optimized VMs with integrated GPU pricing and flexible attachment options.
+> Accelerator-optimized VMs with integrated GPU pricing.
 
 Prices shown are on-demand hourly rates. Spot instances offer 60-91% discounts.
 
 ---
 
-## Accelerator-Optimized VMs (GPU Included)
+## GPU Performance Metrics
 
-| Instance Type      | GPU Config    | VRAM  | Price/hr | Notes                     |
-| ------------------ | ------------- | ----- | -------- | ------------------------- |
-| **a3-megagpu-8g**  | 8x H100 80GB  | 640GB | $88.49   | us-central1 region        |
-| **a3-highgpu-8g**  | 8x H100 80GB  | 640GB | ~$85     | Varies by region          |
-| **a2-ultragpu-8g** | 8x A100 80GB  | 640GB | ~$60     | Contact sales for pricing |
-| **a2-ultragpu-4g** | 4x A100 80GB  | 320GB | ~$30     | Ultra memory variant      |
-| **a2-ultragpu-2g** | 2x A100 80GB  | 160GB | ~$15     |                           |
-| **a2-ultragpu-1g** | 1x A100 80GB  | 80GB  | ~$7.50   |                           |
-| **a2-megagpu-16g** | 16x A100 40GB | 640GB | ~$55     | Mega configuration        |
-| **a2-highgpu-8g**  | 8x A100 40GB  | 320GB | ~$27     | High performance          |
-| **a2-highgpu-4g**  | 4x A100 40GB  | 160GB | ~$14     |                           |
-| **a2-highgpu-2g**  | 2x A100 40GB  | 80GB  | ~$7      |                           |
-| **a2-highgpu-1g**  | 1x A100 40GB  | 40GB  | ~$3.67   | Entry A100                |
-| **g2-standard-48** | 4x L4         | 96GB  | ~$5      | L4 optimized              |
-| **g2-standard-24** | 2x L4         | 48GB  | ~$2.50   |                           |
-| **g2-standard-12** | 1x L4         | 24GB  | ~$1.25   | Cost-effective inference  |
-| **g2-standard-4**  | 1x L4         | 24GB  | ~$1.00   | Entry L4                  |
+| GPU       | Instance/Config         | VRAM | Price/hr | VRAM/$ | BW/$   | FP16 TFLOPS/$ |
+| --------- | ----------------------- | ---- | -------- | ------ | ------ | ------------- |
+| H100 SXM  | a3-highgpu-8g (per GPU) | 80GB | $11.06   | 7.23   | 271.22 | 89.41         |
+| A100 80GB | a2-ultragpu-1g          | 80GB | $7.50    | 10.67  | 266.67 | 41.60         |
+| A100 40GB | a2-highgpu-1g           | 40GB | $3.67    | 10.90  | 435.97 | 85.01         |
+| L4        | g2-standard-4           | 24GB | $1.00    | 24.00  | 300.00 | 60.00         |
+| V100      | N1 + GPU                | 16GB | $2.55    | 6.27   | 352.94 | 49.02         |
+| T4        | N1 + GPU                | 16GB | $0.35    | 45.71  | 914.29 | 185.71        |
 
-## N1 VMs with Attached GPUs
+## Performance Scores
 
-| GPU Type | VRAM | Price per GPU/hr | Max GPUs | Notes                 |
-| -------- | ---- | ---------------- | -------- | --------------------- |
-| **V100** | 16GB | $2.55            | 8        | Previous gen flagship |
-| **T4**   | 16GB | $0.35            | 4        | Inference optimized   |
-| **P100** | 16GB | $1.46            | 4        | Legacy HPC            |
-| **P4**   | 8GB  | $0.60            | 4        | Legacy inference      |
+| GPU       | VRAM-Focused | Compute-Focused | Bandwidth-Focused |
+| --------- | ------------ | --------------- | ----------------- |
+| H100 SXM  | 35.54        | 41.92           | 36.42             |
+| A100 80GB | 24.31        | 23.70           | 25.49             |
+| A100 40GB | 40.81        | 44.15           | 44.20             |
+| L4        | 37.44        | 34.21           | 34.76             |
+| V100      | 26.28        | 27.45           | 30.39             |
+| T4        | 100.00       | 100.00          | 100.00            |
 
 ## Machine Types
 
-**A3 Series**
+### A3 Series (H100/H200)
 
-- H100/H200 GPUs
 - NVSwitch interconnect
 - Best for large-scale training
+- 8 GPU configurations standard
 
-**A2 Series**
+### A2 Series (A100)
 
-- A100 GPUs (40GB or 80GB)
 - Standard: 40GB variants
 - Ultra: 80GB variants
+- 1-16 GPU configurations
 
-**G2 Series**
+### G2 Series (L4)
 
-- L4 GPUs
 - Optimized for inference
 - Cost-effective AI workloads
+- 1-4 GPU configurations
 
-**N1 + GPU**
+### N1 + GPU Attachment
 
 - Flexible GPU attachment
+- V100, T4, P100, P4 available
 - Mix and match configurations
-- Legacy but versatile
 
 ## Pricing Options
 
-**On-Demand**
-
-- Pay per hour
-- No commitment
-- Prices shown above
-
-**Spot VMs**
-
-- 60-91% discount
-- Preemptible workloads
-- Prices change every 30 days
-
-**Committed Use**
-
-- 1-year: ~37% discount
-- 3-year: ~57% discount
-- Sustained use discounts auto-applied
-
-## Regional Availability
-
-Not all GPU types available in all regions. Major availability:
-
-- us-central1: Most GPU types
-- us-west1: A100, V100, T4
-- europe-west4: A100, T4, L4
-- asia-east1: Limited selection
+- **On-Demand**: Pay per hour, no commitment
+- **Spot VMs**: 60-91% discount, preemptible
+- **Committed Use**: 1-year ~37%, 3-year ~57% discount
+- **Sustained Use**: Auto-applied discounts
 
 ## Notes
 
 - GPU cost included in accelerator-optimized VMs
 - N1 VMs charge separately for GPU attachment
-- Preemptible GPUs available for fault-tolerant workloads
+- Not all GPU types available in all regions
 - Custom machine configurations supported
