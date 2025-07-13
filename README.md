@@ -4,6 +4,8 @@
 
 If any of the numbers look sus, just submit a PR.
 
+For cost data on specific major providers, look in `costs/`, where there's a summary comparing providers, and then you can check out individual ones in their respective markdown files.
+
 ---
 
 ## Specs Table
