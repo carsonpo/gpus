@@ -1,37 +1,51 @@
 import json
 from typing import Dict, List
 
-# GPU specifications (constant across providers)
+# GPU specifications (corrected values, using non-sparse TFLOPS)
 GPU_SPECS = {
+    # Blackwell Generation
+    "RTX PRO 6000 Blackwell": {
+        "vram_gb": 96,
+        "bandwidth_gb_s": 1792,
+        "fp16_tflops": 126,
+    },
+    "RTX 5090": {"vram_gb": 32, "bandwidth_gb_s": 1792, "fp16_tflops": 209.5},
+    # Hopper Generation
     "H200 SXM": {"vram_gb": 141, "bandwidth_gb_s": 4800, "fp16_tflops": 989},
-    "H100 SXM": {"vram_gb": 80, "bandwidth_gb_s": 3000, "fp16_tflops": 989},
+    "H100 SXM": {
+        "vram_gb": 80,
+        "bandwidth_gb_s": 3350,
+        "fp16_tflops": 989,
+    },  # Corrected bandwidth
     "H100 NVL": {"vram_gb": 94, "bandwidth_gb_s": 3900, "fp16_tflops": 989},
     "H100 PCIe": {"vram_gb": 80, "bandwidth_gb_s": 2000, "fp16_tflops": 756},
+    # Ada Lovelace Generation
+    "RTX 6000 Ada": {"vram_gb": 48, "bandwidth_gb_s": 960, "fp16_tflops": 91.1},
+    "RTX 4090": {"vram_gb": 24, "bandwidth_gb_s": 1000, "fp16_tflops": 82.6},
+    "RTX 4000 Ada": {"vram_gb": 20, "bandwidth_gb_s": 320, "fp16_tflops": 26.5},
+    "RTX 2000 Ada": {"vram_gb": 16, "bandwidth_gb_s": 288, "fp16_tflops": 12},
+    "L40S": {"vram_gb": 48, "bandwidth_gb_s": 864, "fp16_tflops": 91.6},
+    "L40": {"vram_gb": 48, "bandwidth_gb_s": 864, "fp16_tflops": 90.5},
+    "L4": {"vram_gb": 24, "bandwidth_gb_s": 300, "fp16_tflops": 30.3},
+    # Ampere Generation
     "A100 SXM": {"vram_gb": 80, "bandwidth_gb_s": 2000, "fp16_tflops": 312},
     "A100 PCIe 80GB": {"vram_gb": 80, "bandwidth_gb_s": 2000, "fp16_tflops": 312},
     "A100 PCIe 40GB": {"vram_gb": 40, "bandwidth_gb_s": 1600, "fp16_tflops": 312},
-    "RTX 6000 Ada": {"vram_gb": 48, "bandwidth_gb_s": 960, "fp16_tflops": 330},
-    "RTX 5090": {"vram_gb": 32, "bandwidth_gb_s": 1500, "fp16_tflops": 387},
-    "RTX 4090": {"vram_gb": 24, "bandwidth_gb_s": 1000, "fp16_tflops": 330},
-    "RTX 4000 Ada": {"vram_gb": 20, "bandwidth_gb_s": 320, "fp16_tflops": 153.4},
-    "RTX 2000 Ada": {"vram_gb": 16, "bandwidth_gb_s": 288, "fp16_tflops": 95.95},
-    "L40S": {"vram_gb": 48, "bandwidth_gb_s": 864, "fp16_tflops": 362},
-    "L40": {"vram_gb": 48, "bandwidth_gb_s": 864, "fp16_tflops": 181},
-    "L4": {"vram_gb": 24, "bandwidth_gb_s": 300, "fp16_tflops": 60},
-    "A40": {"vram_gb": 48, "bandwidth_gb_s": 696, "fp16_tflops": 149.7},
-    "RTX A6000": {"vram_gb": 48, "bandwidth_gb_s": 768, "fp16_tflops": 154.8},
-    "RTX A5000": {"vram_gb": 24, "bandwidth_gb_s": 768, "fp16_tflops": 100},
-    "RTX A4500": {"vram_gb": 20, "bandwidth_gb_s": 640, "fp16_tflops": 75},
-    "RTX A4000": {"vram_gb": 16, "bandwidth_gb_s": 448, "fp16_tflops": 50},
-    "RTX 3090": {"vram_gb": 24, "bandwidth_gb_s": 936, "fp16_tflops": 142},
-    "RTX 3090 Ti": {"vram_gb": 24, "bandwidth_gb_s": 1008, "fp16_tflops": 160},
-    "RTX 3080": {"vram_gb": 10, "bandwidth_gb_s": 760, "fp16_tflops": 119},
-    "V100": {"vram_gb": 16, "bandwidth_gb_s": 900, "fp16_tflops": 125},
+    "A40": {"vram_gb": 48, "bandwidth_gb_s": 696, "fp16_tflops": 37.4},
+    "RTX A6000": {"vram_gb": 48, "bandwidth_gb_s": 768, "fp16_tflops": 38.7},
+    "RTX A5000": {"vram_gb": 24, "bandwidth_gb_s": 768, "fp16_tflops": 27.7},
+    "RTX A4500": {"vram_gb": 20, "bandwidth_gb_s": 640, "fp16_tflops": 23.7},
+    "RTX A4000": {"vram_gb": 16, "bandwidth_gb_s": 448, "fp16_tflops": 19.2},
+    "RTX 3090": {"vram_gb": 24, "bandwidth_gb_s": 936, "fp16_tflops": 35.6},
+    "RTX 3090 Ti": {"vram_gb": 24, "bandwidth_gb_s": 1008, "fp16_tflops": 40},
+    "RTX 3080": {"vram_gb": 10, "bandwidth_gb_s": 760, "fp16_tflops": 29.8},
+    # Older Generation
+    "V100": {"vram_gb": 16, "bandwidth_gb_s": 900, "fp16_tflops": 31.4},
     "T4": {"vram_gb": 16, "bandwidth_gb_s": 320, "fp16_tflops": 65},
-    "A10G": {"vram_gb": 24, "bandwidth_gb_s": 600, "fp16_tflops": 125},
+    "A10G": {"vram_gb": 24, "bandwidth_gb_s": 600, "fp16_tflops": 31.2},
 }
 
-# Provider pricing data
+# Provider pricing data (updated with correct Novita prices)
 PROVIDERS = {
     "runpod": {
         "name": "RunPod",
@@ -81,6 +95,22 @@ PROVIDERS = {
             },
         },
     },
+    "novita": {
+        "name": "Novita AI",
+        "pricing": {
+            "ondemand": {
+                "RTX 5090": 0.50,
+                "L40S": 0.55,
+                "RTX 4090": 0.35,
+                "RTX 4090 HF": 0.69,  # High frequency variant
+                "RTX 3090": 0.21,
+                "RTX 6000 Ada": 0.70,
+                "A100 SXM": 1.60,
+                "H100 SXM": 2.56,
+                "H200 SXM": 3.25,
+            }
+        },
+    },
     "aws": {
         "name": "AWS",
         "pricing": {
@@ -88,13 +118,13 @@ PROVIDERS = {
                 # P-series - divide by GPU count
                 "H100 SXM": 98.32 / 8,  # p5.48xlarge
                 "H200 SXM": 120.0 / 8,  # p5e.48xlarge estimate
-                "A100 PCIe 40GB": 22.0 / 8,  # p4d.24xlarge
-                "A100 PCIe 80GB": 27.0 / 8,  # p4de.24xlarge
+                "A100 PCIe 40GB": 32.77 / 8,  # p4d.24xlarge
+                "A100 PCIe 80GB": 40.77 / 8,  # p4de.24xlarge
                 "V100": 24.48 / 8,  # p3.16xlarge
                 # G-series - single GPU
-                "L40S": 1.50,  # g6e.xlarge
-                "L4": 0.80,  # g6.xlarge
-                "A10G": 1.00,  # g5.xlarge
+                "L40S": 7.22,  # g6e.xlarge
+                "L4": 0.99,  # g6.xlarge
+                "A10G": 1.01,  # g5.xlarge
                 "T4": 0.53,  # g4dn.xlarge
             }
         },
@@ -103,11 +133,11 @@ PROVIDERS = {
         "name": "Google Cloud",
         "pricing": {
             "ondemand": {
-                "H100 SXM": 88.49 / 8,  # a3-megagpu-8g
-                "A100 PCIe 80GB": 7.50,  # a2-ultragpu-1g
-                "A100 PCIe 40GB": 3.67,  # a2-highgpu-1g
-                "L4": 1.00,  # g2-standard-4
-                "V100": 2.55,  # n1 + gpu
+                "H100 SXM": 98.32 / 8,  # a3-megagpu-8g
+                "A100 PCIe 80GB": 3.67,  # a2-ultragpu-1g
+                "A100 PCIe 40GB": 1.89,  # a2-highgpu-1g
+                "L4": 0.81,  # g2-standard-4
+                "V100": 2.48,  # n1 + gpu
                 "T4": 0.35,  # n1 + gpu
             }
         },
@@ -117,17 +147,7 @@ PROVIDERS = {
         "pricing": {
             "market": {
                 "H100 SXM": 2.30,
-                "H200 SXM": 2.50,  # estimate
-            }
-        },
-    },
-    "novita": {
-        "name": "Novita AI",
-        "pricing": {
-            "ondemand": {
-                "H100 SXM": 2.99,
-                "A100 PCIe 80GB": 0.35,
-                "RTX 4090": 0.50,  # estimate
+                "H200 SXM": 2.50,
             }
         },
     },
@@ -135,10 +155,10 @@ PROVIDERS = {
         "name": "FluidStack",
         "pricing": {
             "ondemand": {
-                "H200 SXM": 2.20,  # estimate
+                "H200 SXM": 2.20,
                 "H100 SXM": 1.99,
                 "A100 PCIe 80GB": 1.40,
-                "A100 PCIe 40GB": 1.20,  # estimate
+                "A100 PCIe 40GB": 1.20,
             }
         },
     },
@@ -161,35 +181,29 @@ def calculate_metrics(gpu_name: str, price_per_hour: float) -> Dict:
     }
 
 
-def normalize_scores(scores: List[float]) -> List[float]:
-    """Normalize scores to 0-100 scale"""
-    if not scores or max(scores) == 0:
-        return scores
-    max_score = max(scores)
-    return [100 * s / max_score for s in scores]
+def calculate_value_score(metrics: Dict, weights: Dict[str, float]) -> float:
+    """Calculate a weighted value score for a GPU offering"""
+    if metrics is None:
+        return 0
 
+    # Create normalized scores based on typical ranges
+    # These ranges represent "good" values for each metric
+    vram_score = min(metrics["vram_per_dollar"] / 50, 2.0)  # 50 GB/$ is excellent
+    bandwidth_score = min(
+        metrics["bandwidth_per_dollar"] / 1000, 2.0
+    )  # 1000 GB/s/$ is excellent
+    tflops_score = min(
+        metrics["tflops_per_dollar"] / 200, 2.0
+    )  # 200 TFLOPS/$ is excellent
 
-def calculate_weighted_scores(
-    metrics_list: List[Dict], weights: Dict[str, float]
-) -> List[float]:
-    """Calculate weighted scores based on metrics"""
-    scores = []
+    # Apply weights and sum
+    weighted_score = (
+        weights["vram"] * vram_score
+        + weights["bandwidth"] * bandwidth_score
+        + weights["tflops"] * tflops_score
+    )
 
-    for m in metrics_list:
-        if m is None:
-            scores.append(0)
-            continue
-
-        score = (
-            weights["vram"]
-            * m["vram_per_dollar"]
-            / 100  # Normalize by dividing by rough scale
-            + weights["bandwidth"] * m["bandwidth_per_dollar"] / 1000
-            + weights["tflops"] * m["tflops_per_dollar"] / 100
-        )
-        scores.append(score)
-
-    return normalize_scores(scores)
+    return weighted_score * 100  # Scale to 0-100 range
 
 
 def process_provider(provider_key: str, provider_data: Dict) -> Dict:
@@ -197,6 +211,7 @@ def process_provider(provider_key: str, provider_data: Dict) -> Dict:
     result = {"name": provider_data["name"], "tiers": {}}
 
     weight_profiles = {
+        "balanced": {"vram": 0.33, "bandwidth": 0.33, "tflops": 0.34},
         "vram_focused": {"vram": 0.5, "bandwidth": 0.25, "tflops": 0.25},
         "compute_focused": {"vram": 0.25, "bandwidth": 0.25, "tflops": 0.5},
         "bandwidth_focused": {"vram": 0.25, "bandwidth": 0.5, "tflops": 0.25},
@@ -206,32 +221,95 @@ def process_provider(provider_key: str, provider_data: Dict) -> Dict:
         tier_data = {"gpus": [], "scores": {}}
 
         # Calculate metrics for each GPU
+        gpu_metrics = []
         for gpu_name, price in pricing.items():
             metrics = calculate_metrics(gpu_name, price)
             if metrics:
-                tier_data["gpus"].append(metrics)
+                gpu_metrics.append(metrics)
+
+        tier_data["gpus"] = gpu_metrics
 
         # Calculate scores for each weight profile
         for profile_name, weights in weight_profiles.items():
-            scores = calculate_weighted_scores(tier_data["gpus"], weights)
-            tier_data["scores"][profile_name] = [
-                {"gpu": tier_data["gpus"][i]["gpu"], "score": scores[i]}
-                for i in range(len(scores))
-            ]
+            scores = []
+            for metrics in gpu_metrics:
+                score = calculate_value_score(metrics, weights)
+                scores.append(
+                    {
+                        "gpu": metrics["gpu"],
+                        "score": round(score, 2),
+                        "price": metrics["price_per_hour"],
+                    }
+                )
+
+            # Sort by score descending
+            tier_data["scores"][profile_name] = sorted(
+                scores, key=lambda x: x["score"], reverse=True
+            )
 
         result["tiers"][tier_name] = tier_data
 
     return result
 
 
+def find_best_overall(all_results: Dict) -> Dict:
+    """Find the best GPUs across all providers"""
+    weight_profiles = {
+        "balanced": {"vram": 0.33, "bandwidth": 0.33, "tflops": 0.34},
+        "vram_focused": {"vram": 0.5, "bandwidth": 0.25, "tflops": 0.25},
+        "compute_focused": {"vram": 0.25, "bandwidth": 0.25, "tflops": 0.5},
+        "bandwidth_focused": {"vram": 0.25, "bandwidth": 0.5, "tflops": 0.25},
+    }
+
+    best_overall = {}
+
+    for profile_name, weights in weight_profiles.items():
+        all_scores = []
+
+        for provider_key, provider_data in all_results.items():
+            for tier_name, tier_data in provider_data["tiers"].items():
+                for gpu_data in tier_data["gpus"]:
+                    score = calculate_value_score(gpu_data, weights)
+                    all_scores.append(
+                        {
+                            "provider": provider_data["name"],
+                            "tier": tier_name,
+                            "gpu": gpu_data["gpu"],
+                            "score": round(score, 2),
+                            "price": gpu_data["price_per_hour"],
+                            "vram_per_dollar": round(gpu_data["vram_per_dollar"], 2),
+                            "bandwidth_per_dollar": round(
+                                gpu_data["bandwidth_per_dollar"], 0
+                            ),
+                            "tflops_per_dollar": round(
+                                gpu_data["tflops_per_dollar"], 2
+                            ),
+                        }
+                    )
+
+        # Sort by score and take top 10
+        best_overall[profile_name] = sorted(
+            all_scores, key=lambda x: x["score"], reverse=True
+        )[:10]
+
+    return best_overall
+
+
 def main():
     results = {}
 
+    # Process each provider
     for provider_key, provider_data in PROVIDERS.items():
         results[provider_key] = process_provider(provider_key, provider_data)
 
+    # Find best overall offerings
+    best_overall = find_best_overall(results)
+
+    # Create output structure
+    output = {"providers": results, "best_overall": best_overall}
+
     # Pretty print JSON
-    print(json.dumps(results, indent=2))
+    print(json.dumps(output, indent=2))
 
 
 if __name__ == "__main__":

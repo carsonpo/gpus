@@ -8,37 +8,37 @@ Prices shown are on-demand hourly rates. Reserved and spot options available.
 
 ## GPU Performance Metrics
 
-| GPU       | Instance           | VRAM    | Price/hr | VRAM/$ | BW/$   | FP16 TFLOPS/$ |
-| --------- | ------------------ | ------- | -------- | ------ | ------ | ------------- |
-| H100 SXM  | p5.48xlarge (8x)   | 640GB   | $12.29   | 6.51   | 244.10 | 80.47         |
-| H200 SXM  | p5e.48xlarge (8x)  | 1,128GB | $15.00   | 9.40   | 320.00 | 65.93         |
-| A100 40GB | p4d.24xlarge (8x)  | 320GB   | $2.75    | 14.55  | 581.82 | 113.45        |
-| A100 80GB | p4de.24xlarge (8x) | 640GB   | $3.375   | 23.70  | 592.59 | 92.44         |
-| V100      | p3.2xlarge         | 16GB    | $3.06    | 5.23   | 294.12 | 40.85         |
-| L40S      | g6e.xlarge         | 48GB    | $1.50    | 32.00  | 576.00 | 241.33        |
-| L4        | g6.xlarge          | 24GB    | $0.80    | 30.00  | 375.00 | 75.00         |
-| A10G      | g5.xlarge          | 24GB    | $1.00    | 24.00  | 600.00 | 125.00        |
-| T4        | g4dn.xlarge        | 16GB    | $0.53    | 30.19  | 603.77 | 122.64        |
+| GPU       | Instance                | Price/hr | VRAM/$ | BW/$   | FP16 TFLOPS/$ |
+| --------- | ----------------------- | -------- | ------ | ------ | ------------- |
+| H100 SXM  | p5.48xlarge (per GPU)   | $12.29   | 6.51   | 272.58 | 80.47         |
+| H200 SXM  | p5e.48xlarge (per GPU)  | $15.00   | 9.40   | 320.00 | 65.93         |
+| A100 40GB | p4d.24xlarge (per GPU)  | $4.10    | 9.77   | 390.60 | 76.17         |
+| A100 80GB | p4de.24xlarge (per GPU) | $5.10    | 15.70  | 392.45 | 61.22         |
+| V100      | p3.2xlarge              | $3.06    | 5.23   | 294.12 | 10.26         |
+| L40S      | g6e.xlarge              | $7.22    | 6.65   | 119.67 | 12.69         |
+| L4        | g6.xlarge               | $0.99    | 24.24  | 303.03 | 30.61         |
+| A10G      | g5.xlarge               | $1.01    | 23.76  | 594.06 | 30.89         |
+| T4        | g4dn.xlarge             | $0.53    | 30.19  | 603.77 | 122.64        |
 
 ## Performance Scores
 
-| GPU       | VRAM-Focused | Compute-Focused | Bandwidth-Focused |
-| --------- | ------------ | --------------- | ----------------- |
-| H100 SXM  | 32.49        | 33.53           | 34.95             |
-| H200 SXM  | 32.16        | 30.28           | 35.86             |
-| A100 40GB | 55.31        | 52.36           | 62.89             |
-| A100 80GB | 54.86        | 46.81           | 60.40             |
-| V100      | 22.24        | 20.33           | 27.00             |
-| L40S      | 100.00       | 100.00          | 100.00            |
-| L4        | 47.53        | 38.01           | 46.33             |
-| A10G      | 64.20        | 58.36           | 69.23             |
-| T4        | 67.06        | 58.69           | 70.41             |
+| GPU       | Balanced | VRAM-Focused | Compute-Focused | Bandwidth-Focused |
+| --------- | -------- | ------------ | --------------- | ----------------- |
+| T4        | 60.70    | 60.61        | 60.85           | 60.61             |
+| A10G      | 40.54    | 42.48        | 34.46           | 45.45             |
+| A100 80GB | 33.72    | 33.16        | 32.97           | 35.12             |
+| A100 40GB | 32.28    | 29.05        | 33.69           | 33.93             |
+| L4        | 31.20    | 35.64        | 27.35           | 31.10             |
+| H200 SXM  | 27.97    | 25.64        | 29.18           | 28.94             |
+| H100 SXM  | 26.97    | 23.38        | 30.19           | 26.94             |
+| V100      | 14.90    | 13.86        | 12.53           | 18.60             |
+| L40S      | 10.49    | 11.23        | 9.49            | 10.89             |
 
 ## Instance Details
 
 ### P-Series (ML/HPC Optimized)
 
-- **p5.48xlarge**: 8x H100, 3,200 Gbps EFA networking
+- **p5.48xlarge**: 8x H100, 3.2 Tbps EFA networking
 - **p5e.48xlarge**: 8x H200, Enhanced memory bandwidth
 - **p4d.24xlarge**: 8x A100 40GB, 400 Gbps networking
 - **p4de.24xlarge**: 8x A100 80GB, Extended memory
@@ -54,6 +54,7 @@ Prices shown are on-demand hourly rates. Reserved and spot options available.
 ## Regional Availability
 
 - **P5 (H100)**: US East, US West, Asia Pacific, South America
+- **P5e (H200)**: Limited availability
 - **G6e (L40S)**: Limited availability
 - **P4d/P4de (A100)**: Most major regions
 
@@ -63,3 +64,4 @@ Prices shown are on-demand hourly rates. Reserved and spot options available.
 - EFA networking included on P4/P5 instances
 - Capacity Blocks available for guaranteed access
 - Spot instances offer up to 90% discount
+- T4 offers best value for inference workloads

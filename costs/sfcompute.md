@@ -10,15 +10,22 @@ Market-based pricing with contract trading capabilities.
 
 | GPU  | VRAM  | Price/hr | VRAM/$ | BW/$    | FP16 TFLOPS/$ |
 | ---- | ----- | -------- | ------ | ------- | ------------- |
-| H100 | 80GB  | $2.30    | 34.78  | 1304.35 | 430.00        |
+| H100 | 80GB  | $2.30    | 34.78  | 1456.52 | 430.00        |
 | H200 | 141GB | $2.50    | 56.40  | 1920.00 | 395.60        |
 
 ## Performance Scores
 
-| GPU  | VRAM-Focused | Compute-Focused | Bandwidth-Focused |
-| ---- | ------------ | --------------- | ----------------- |
-| H100 | 89.95        | 98.62           | 86.80             |
-| H200 | 100.00       | 100.00          | 100.00            |
+| GPU  | Balanced | VRAM-Focused | Compute-Focused | Bandwidth-Focused |
+| ---- | -------- | ------------ | --------------- | ----------------- |
+| H200 | 167.84   | 153.85       | 175.10          | 173.65            |
+| H100 | 139.02   | 121.20       | 153.80          | 140.22            |
+
+## Key Features
+
+- **H200 SXM**: Top-tier performance with 141GB VRAM
+- **H100 SXM**: Excellent compute performance at competitive price
+- **InfiniBand**: 3.2Tb/s interconnect included
+- **Kubernetes**: Full cluster support
 
 ## Deployment Options
 

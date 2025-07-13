@@ -8,25 +8,25 @@ Prices shown are on-demand hourly rates. Spot instances offer 60-91% discounts.
 
 ## GPU Performance Metrics
 
-| GPU       | Instance/Config         | VRAM | Price/hr | VRAM/$ | BW/$   | FP16 TFLOPS/$ |
-| --------- | ----------------------- | ---- | -------- | ------ | ------ | ------------- |
-| H100 SXM  | a3-highgpu-8g (per GPU) | 80GB | $11.06   | 7.23   | 271.22 | 89.41         |
-| A100 80GB | a2-ultragpu-1g          | 80GB | $7.50    | 10.67  | 266.67 | 41.60         |
-| A100 40GB | a2-highgpu-1g           | 40GB | $3.67    | 10.90  | 435.97 | 85.01         |
-| L4        | g2-standard-4           | 24GB | $1.00    | 24.00  | 300.00 | 60.00         |
-| V100      | N1 + GPU                | 16GB | $2.55    | 6.27   | 352.94 | 49.02         |
-| T4        | N1 + GPU                | 16GB | $0.35    | 45.71  | 914.29 | 185.71        |
+| GPU       | Instance/Config         | Price/hr | VRAM/$ | BW/$   | FP16 TFLOPS/$ |
+| --------- | ----------------------- | -------- | ------ | ------ | ------------- |
+| H100 SXM  | a3-megagpu-8g (per GPU) | $12.29   | 6.51   | 272.58 | 80.47         |
+| A100 80GB | a2-ultragpu-1g          | $3.67    | 21.80  | 544.96 | 85.01         |
+| A100 40GB | a2-highgpu-1g           | $1.89    | 21.16  | 846.56 | 165.08        |
+| L4        | g2-standard-4           | $0.81    | 29.63  | 370.37 | 37.41         |
+| V100      | N1 + GPU                | $2.48    | 6.45   | 362.90 | 12.66         |
+| T4        | N1 + GPU                | $0.35    | 45.71  | 914.29 | 185.71        |
 
 ## Performance Scores
 
-| GPU       | VRAM-Focused | Compute-Focused | Bandwidth-Focused |
-| --------- | ------------ | --------------- | ----------------- |
-| H100 SXM  | 35.54        | 41.92           | 36.42             |
-| A100 80GB | 24.31        | 23.70           | 25.49             |
-| A100 40GB | 40.81        | 44.15           | 44.20             |
-| L4        | 37.44        | 34.21           | 34.76             |
-| V100      | 26.28        | 27.45           | 30.39             |
-| T4        | 100.00       | 100.00          | 100.00            |
+| GPU       | Balanced | VRAM-Focused | Compute-Focused | Bandwidth-Focused |
+| --------- | -------- | ------------ | --------------- | ----------------- |
+| T4        | 91.91    | 91.79        | 92.14           | 91.79             |
+| A100 40GB | 69.97    | 62.96        | 73.02           | 73.54             |
+| A100 80GB | 46.82    | 46.05        | 45.78           | 48.77             |
+| L4        | 38.14    | 43.56        | 33.43           | 38.01             |
+| H100 SXM  | 26.97    | 23.38        | 30.19           | 26.94             |
+| V100      | 18.39    | 17.11        | 15.46           | 22.95             |
 
 ## Machine Types
 
@@ -53,6 +53,12 @@ Prices shown are on-demand hourly rates. Spot instances offer 60-91% discounts.
 - Flexible GPU attachment
 - V100, T4, P100, P4 available
 - Mix and match configurations
+
+## Best Value Options
+
+- **T4**: Exceptional inference value at $0.35/hr
+- **A100 40GB**: Best training performance/price at $1.89/hr
+- **L4**: Modern architecture for AI workloads at $0.81/hr
 
 ## Pricing Options
 
